@@ -1,5 +1,8 @@
 FROM amkisko/debian-rbenv-nodenv:latest
 
+ARG RUBY_VERSION
+ARG NODE_VERSION
+
 RUN apt-get -q update && apt-get -q -y install \
   poppler-utils imagemagick libpq-dev \
   libvips-dev tzdata wget
@@ -10,10 +13,10 @@ RUN apt-get -q update && apt-get -q -y install \
   fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst \
   fonts-freefont-ttf
 
-RUN rbenv install 3.2.0 -s
+RUN rbenv install ${RUBY_VERSION} -s
 
-RUN nodenv install 17.3.1 -s
-RUN nodenv local 17.3.1 && npm install -g yarn && nodenv rehash
+RUN nodenv install ${NODE_VERSION} -s
+RUN nodenv local ${NODE_VERSION} && npm install -g yarn && nodenv rehash
 
 CMD /bin/bash
 
