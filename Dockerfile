@@ -1,4 +1,4 @@
-FROM amkisko/debian-rbenv-nodenv:latest
+FROM kiskolabs/debian-rbenv-nodenv:latest
 
 ARG RUBY_VERSION
 ARG NODE_VERSION
